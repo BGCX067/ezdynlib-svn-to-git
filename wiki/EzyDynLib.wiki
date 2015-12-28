@@ -1,0 +1,8 @@
+#summary Mainpage
+= Introduction =
+
+The goal of !EzyDynLib is to create a platform independent C++ library that can control a set of dynamixel servo engines. The only other requirement will be a dynamixel.dll from Robotis. [http://support.robotis.com/en/baggage\_files/dynamixel\_sdk/dxl\_sdk\_linux\_v1\_01.zip Linux] and Windows ([http://support.robotis.com/en/baggage\_files/dynamixel\_sdk/dxl\_sdk\_win32\_v1\_02.zip win32]) binary and source file are available.
+
+ServoCommunication
+
+[API]

@@ -1,0 +1,113 @@
+#summary One-sentence summary of this page.
+
+= API =
+
+== Communication ==
+{{{
+Communication *comm = new Communication();
+}}}
+Creates a new communication object.
+
+{{{
+int Communication::connect()
+}}}
+Connects to the USB2Dynamixel. Returns 1 if successful, 0 if unsuccessful.
+
+
+== Servo ==
+{{{
+Servo::Servo(int id, Communication *comm)
+}}}
+
+Starts a connection to a servo.
+
+{{{
+int Servo::getType()
+}}}
+Gets the type of servo. Returns 12 for an AX-12 servo and 1 for an AX-S1 sensor.
+
+{{{
+int Servo::getCWAngleLimit()
+}}}
+Gets the clockwise angle limit of the servo.
+
+{{{
+int Servo::getCCWAngleLimit()
+}}}
+Gets the counter-clockwise angle limit of the servo.
+
+{{{
+int Servo::getAngle()
+}}}
+Gets the current angle of the servo.
+
+{{{
+int Servo::getTemp()
+}}}
+Gets the current temperature of the servo.
+
+{{{
+int Servo::getLoad()
+}}}
+Gets the current load of the servo.
+
+{{{
+int Servo::getVolt()
+}}}
+Gets the current voltage of the servo.
+
+{{{
+int Servo::getId()
+}}}
+Gets the ID of the servo.
+
+{{{
+int Servo::isMoving()
+}}}
+Checks if the servo is moving.
+
+{{{
+int Servo::getSpeed()
+}}}
+Gets the current speed of the servo.
+
+== Wheel Servo ==
+The wheel servo class inherits from the servo class.
+
+{{{
+WheelServo::WheelServo(int id, Communication *comm, bool port)
+}}}
+Creates a new wheel servo instance, takes in the servo's ID, a communication instance that points to the USB2Dynamixel the servo is connected to and a boolean value set to true if the wheel is on the port side of the vehicle. The wheel must then rotate in the opposite direction as the ones at starboard.
+
+{{{
+int WheelServo::setWheelMode(bool wheelMode)
+}}}
+Sets the servo to wheel mode for continuous rotation.
+
+{{{
+int WheelServo::setWheelSpeed(int speed)
+}}}
+Sets the speed of the wheel.
+
+== Joint Servo ==
+The joint servo class inherits from the servo class.
+
+{{{
+JointServo::JointServo(int id, Communication *comm)
+}}}
+Creates a new joint servo instance, takes in the servo's ID, a communication instance that points to the USB2Dynamixel the servo is connected to.
+
+{{{
+int JointServo::setJointMode(bool jointMode)
+}}}
+Sets the servo in joint mode.
+
+{{{
+int JointServo::setStep(int step, int speed) {
+}}}
+The setStep method sets the servo position to a step between 0 and 1023. The steps correspond to the degrees 0 to 275?
+
+{{{
+int JointServo::setSpeed(int speed){
+}}}
+The setSpeed method will set the the speed of the servo.

@@ -1,0 +1,40 @@
+#summary Communicating with servos
+
+==Communicating with the servos==
+To communicate with the engines the user will first need to create an instance from the communication class and run the connect method. The connect method will return *true* if it was successful in connecting to the dynamixel servos.
+{{{
+Communication *comm = new Communication();
+comm->connect();
+}}}
+
+In order to control a servo the user will need to create an instance of the servo class. It takes the servo ID printed on the side of the servo and a pointer to the communication instance.
+
+{{{
+Servo *servo1 = new Servo(1, comm); //servo with ID = 1
+}}}
+
+If the user wants to have a moving vehicle, he will need to let the servo class
+know which wheels are needs to rotate backwards. Which wheels this applies
+for will depend on the design of the vehicle.
+
+{{{
+Servo *wheel1 = new Servo(4, comm, true);
+ //true = rotate backwards.
+}}}
+
+To control more servos, the user can create more servo instances. The following
+example will set servo 1 to it's first step and servo 2 to its last step. There
+are 1024 steps in total.
+
+{{{
+Servo *servo1 = new Servo(1, comm);
+Servo *servo2 = new Servo(1, comm);
+
+//set servo 1 to position 0 with a speed of 250:
+servo1->setAngle(0, 250);
+
+//set servo 2 to position 1023 with a speed of 250:
+servo2->setAngle(1023, 250);
+}}}
+
+The communication class will write a message depending on the success of the command.
